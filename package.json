@@ -2,13 +2,25 @@
   "name": "s75_masters_of_influence-1",
   "version": "1.0.0",
   "description": "Project Title:- Masters of Influence.\r --",
+  "homepage": "https://github.com/DHANYA-00/S75_Masters_of_Influence#readme",
+  "bugs": {
+    "url": "https://github.com/DHANYA-00/S75_Masters_of_Influence/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DHANYA-00/S75_Masters_of_Influence.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.0"
   }
 }
