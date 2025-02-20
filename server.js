@@ -2,7 +2,7 @@ const express=require("express")
 const mongoose=require('mongoose')
 require('dotenv').config();
 const app =express();
-const PORT=4444; 
+const PORT=4000; 
 
 app.get("/ping",(req,res)=>{
     res.send("pong")
