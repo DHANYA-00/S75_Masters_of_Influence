@@ -24,7 +24,9 @@ Why this Project:-
 - This project was chosen because it’s both creative and functional, allowing me to explore building a platform that showcases how people can transcend their initial professions and make significant impacts in various domains.
 
 
- Deployment Link: https://s75-masters-of-influence-1.onrender.com
+ Backend-Deployment Link: https://s75-masters-of-influence-1.onrender.com
+
+frontend-Deployment Link:  https://masters-of-influence.netlify.app/
 
 
 
