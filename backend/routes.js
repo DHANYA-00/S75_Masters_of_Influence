@@ -42,4 +42,20 @@ router.delete("/items/:id", (req, res) => {
   res.json({ message: "Item deleted successfully" });
 });
 
+// let users = [{ id: 1, name: "Shank" }];
+  
+  
+// router.post("/items", (req, res) => {
+//     const { name } = req.body;
+//     if (!name) return res.status(400).json({ message: "Name is required" });
+  
+//     const newItem = { id: items.length + 1, name };
+//     items.push(newItem);
+//     res.status(201).json(newItem);
+//   });
+  
+//   router.get("/items", (req, res) => {
+//     res.json({items});
+// });
+
 module.exports = router;
