@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import NewComponent from '../src/newComponent'
+import NewComponent from './newComponent'
 
 function App() {
   return (

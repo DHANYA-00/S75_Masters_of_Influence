@@ -7,6 +7,15 @@ const routes = require("./routes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const URI=process.env.URI;
+
+mongoose.connect(URI)
+.then(()=>{
+    console.log('MongoDB connected successfully')
+})
+.catch(()=>{
+    console.log('Failed connect MongoDB')
+})
 
 
 app.use(express.json());
