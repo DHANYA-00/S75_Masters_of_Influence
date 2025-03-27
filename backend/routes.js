@@ -1,61 +1,72 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 
+// Define Mongoose Schema
+const itemSchema = new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+}, { timestamps: true });
 
-let items = [{ id: 1, name: "Devil" }];
+const Item = mongoose.model("Item", itemSchema);
 
-
-router.post("/items", (req, res) => {
+// Create Item (POST)
+router.post("/items", async (req, res) => {
   const { name } = req.body;
   if (!name) return res.status(400).json({ message: "Name is required" });
 
-  const newItem = { id: items.length + 1, name };
-  items.push(newItem);
-  res.status(201).json(newItem);
+  try {
+    const newItem = new Item({ name });
+    await newItem.save();
+    res.status(201).json(newItem);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
 });
 
-router.get("/items", (req, res) => {
-  res.json(items);
+// Get All Items (GET)
+router.get("/items", async (req, res) => {
+  try {
+    const items = await Item.find();
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
 });
 
-router.get("/items/:id", (req, res) => {
-  const item = items.find(i => i.id === parseInt(req.params.id));
-  if (!item) return res.status(404).json({ message: "Item not found" });
+// Get Single Item by ID (GET)
+router.get("/items/:id", async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id);
+    if (!item) return res.status(404).json({ message: "Item not found" });
 
-  res.json(item);
+    res.json(item);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
 });
 
+// Update Item (PUT)
+router.put("/items/:id", async (req, res) => {
+  try {
+    const updatedItem = await Item.findByIdAndUpdate(req.params.id, { name: req.body.name }, { new: true });
+    if (!updatedItem) return res.status(404).json({ message: "Item not found" });
 
-router.put("/items/:id", (req, res) => {
-  const item = items.find(i => i.id === parseInt(req.params.id));
-  if (!item) return res.status(404).json({ message: "Item not found" });
-
-  item.name = req.body.name || item.name;
-  res.json({ message: "Item updated successfully", item });
+    res.json({ message: "Item updated successfully", updatedItem });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
 });
 
-router.delete("/items/:id", (req, res) => {
-  const itemIndex = items.findIndex(i => i.id === parseInt(req.params.id));
-  if (itemIndex === -1) return res.status(404).json({ message: "Item not found" });
+// Delete Item (DELETE)
+router.delete("/items/:id", async (req, res) => {
+  try {
+    const deletedItem = await Item.findByIdAndDelete(req.params.id);
+    if (!deletedItem) return res.status(404).json({ message: "Item not found" });
 
-  items.splice(itemIndex, 1);
-  res.json({ message: "Item deleted successfully" });
+    res.json({ message: "Item deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
 });
-
-// let users = [{ id: 1, name: "Shank" }];
-  
-  
-// router.post("/items", (req, res) => {
-//     const { name } = req.body;
-//     if (!name) return res.status(400).json({ message: "Name is required" });
-  
-//     const newItem = { id: items.length + 1, name };
-//     items.push(newItem);
-//     res.status(201).json(newItem);
-//   });
-  
-//   router.get("/items", (req, res) => {
-//     res.json({items});
-// });
 
 module.exports = router;

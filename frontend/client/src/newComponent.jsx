@@ -11,7 +11,7 @@ function NewComponent() {
 
     const fetchData = async()=>{
       try{
-        const response = await fetch("http://localhost:3000/api/items");
+        const response = await fetch("http://localhost:5000/api/items");
         if(!response.ok){
           console.log("error")
         }
@@ -25,19 +25,19 @@ function NewComponent() {
 
 
   return (
-    <div>
+    <div >
         <button className='like-button' onClick={handleIncrement}>
         Like:{Count}
         </button>
         <button onClick={fetchData}>Fetch Data</button>
-        <p>{
+        <div className='container'>{
           Ent.map((item,i)=>(
-            <div key={i}>
+            <div key={i} className='card'>
               <h3>{item.id}</h3>
               <p>{item.name}</p>
             </div>
           ))
-          }</p>
+          }</div>
     </div>
   )
 }

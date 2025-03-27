@@ -9,5 +9,27 @@
   background-color: rgb(199, 149, 247);
 }
 body{
-  background-color: blanchedalmond;
+  background-color: rgb(255, 228, 247);
+}
+
+.form{
+  margin-bottom: 45%;
+  margin-left: 45%;
+}
+.container{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+
+}
+
+.card{
+  border:2px solid black;
+  border-radius: 20px;;
+  text-align: center;
+  gap:20px;
+  padding: 10px;
+  margin:20px;
+  font-size: 20px;
+  background: #d6abff;
+
 }
