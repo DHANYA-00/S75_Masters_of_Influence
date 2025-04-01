@@ -9,7 +9,8 @@ function App() {
       <div className="page">
         <h1>Welcome to My ASAP Project</h1>
         <hr />
-        <p>
+        <h2 className="main">Masters Of Influence</h2>
+        <p className="p">
           This project was chosen because its both creative and functional, allowing me to explore building a platform that showcases how people can transcend their initial professions and make significant impacts in various domains.
         </p>
       </div>
