@@ -1,13 +1,103 @@
-.page{
+/* App.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: #1c1cc5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #304e6e;
+}
+
+.like-button {
+  background-color: #1ebe44;
+}
+
+.like-button:hover {
+  background-color: #218838;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: left;
+}
+
+/* Different colors for name and domain */
+.card p:first-of-type {
+  color: #421394; /* Blue for name */
+  font-weight: bold;
   text-align: center;
 }
 
-.like-button{
-  padding: 10px;
-  margin-left: 45rem;
-  border: 15px;
-  background-color: rgb(199, 149, 247);
+.card p:last-of-type {
+  color: #b3365d; /* Orange for domain */
+  font-style:italic;
+  text-align: center;
 }
-body{
-  background-color: blanchedalmond;
+
+.formBox {
+  margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+input {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #ffc107;
+  color: black;
+}
+
+button[type="submit"]:hover {
+  background-color: #e0a800;
+}
+
+.main{
+  color: #d34242;
+}
+
+.p{
+  margin: 40px;
+  padding: 15px;
+  background-color: #66accf;
+
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
 }

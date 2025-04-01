@@ -6,7 +6,7 @@ require("dotenv").config();
 const routes = require("./routes");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 5000;
 const URI=process.env.URI;
 
 mongoose.connect(URI)
