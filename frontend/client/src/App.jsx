@@ -1,22 +1,20 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import NewComponent from "./newComponent";
-import AddInfluencer from "./AddInfluencer";
-import "./App.css";
+import UpdateComponent from "./UpdataComponent"; // Import the update page
 
 function App() {
   return (
-    <>
-      <div className="page">
-        <h1>Welcome to My ASAP Project</h1>
-        <hr />
-        <h2 className="main">Masters Of Influence</h2>
-        <p className="p">
-          This project was chosen because its both creative and functional, allowing me to explore building a platform that showcases how people can transcend their initial professions and make significant impacts in various domains.
-        </p>
-      </div>
-      <NewComponent />
-      {/* <AddInfluencer /> */}
-    </>
+    <div className="page">
+      <h1>Welcome to My ASAP Project</h1>
+      <hr />
+      <h2 className="main">Masters Of Influence</h2>
+
+      <Routes>
+        <Route path="/" element={<NewComponent />} />
+        <Route path="/update/:id" element={<UpdateComponent />} /> {/* New Update Page Route */}
+      </Routes>
+    </div>
   );
 }
 
