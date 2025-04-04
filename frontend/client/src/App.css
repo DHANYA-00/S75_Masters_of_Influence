@@ -1,103 +1,70 @@
-/* App.css */
-
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-button {
-  background-color: #1c1cc5;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  margin: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #304e6e;
-}
-
-.like-button {
-  background-color: #1ebe44;
-}
-
-.like-button:hover {
-  background-color: #218838;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .card {
-  background-color: white;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 200px;
-  text-align: left;
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
 }
 
-/* Different colors for name and domain */
-.card p:first-of-type {
-  color: #421394; /* Blue for name */
-  font-weight: bold;
-  text-align: center;
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.card p:last-of-type {
-  color: #b3365d; /* Orange for domain */
-  font-style:italic;
-  text-align: center;
+button:hover {
+    background: #0056b3;
+}
+
+.like-button {
+    background: #28a745;
+}
+
+.like-button:hover {
+    background: #218838;
 }
 
 .formBox {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
 }
 
 input {
-  padding: 8px;
-  width: 200px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-button[type="submit"] {
-  background-color: #ffc107;
-  color: black;
-}
-
-button[type="submit"]:hover {
-  background-color: #e0a800;
-}
-
-.main{
-  color: #d34242;
-}
-
-.p{
-  margin: 40px;
-  padding: 15px;
-  background-color: #66accf;
-
-  display: flex;
-  flex-direction: row;
-  border-radius: 20px;
-}
