@@ -1,14 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const Item = require('./schema');
+const User = require("./userSchema")
 
-// Define Mongoose Schema
-const itemSchema = new mongoose.Schema({
-  name: { type: String, required: true, trim: true },
-  domain:{type:String,required:true}
-}, { timestamps: true });
-
-const Item = mongoose.model("Item", itemSchema);
 
 // Create Item (POST)
 router.post("/items", async (req, res) => {
@@ -69,5 +64,42 @@ router.delete("/items/:id", async (req, res) => {
     res.status(500).json({ message: "Server Error", error });
   }
 });
+
+router.post('/register',async(req,res)=>{
+  try{
+    const{ Name,Email,Password } =req.body;
+    if(!Name||!Email||!Password){
+      return res.status(400).json({
+        error:'All Fields are required'
+      })
+    }
+    if(!Name){
+      return res.status(404).json({
+        error:"Name is required!"
+      })
+    }
+    if(!Email||!Email.includes('@')){
+      return res.status(404).json({
+        error:"Incorrect email!"
+      }) 
+    }
+    if(!Password||!Password.length>8){
+      return res.status(404).json({
+        error:"Incorrect password!"
+      })
+    }
+    const user=await User.create(req.body);
+    return res.status(201).json({
+      message:"Created Successfully",
+      Data: user
+    })
+  }
+  catch(err){
+    return res.status(500).json({
+      error:"Internal server error",
+      err:err.message
+    })
+  }
+})
 
 module.exports = router;
