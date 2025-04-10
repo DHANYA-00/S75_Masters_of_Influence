@@ -7,11 +7,11 @@ const User = require("./userSchema")
 
 // Create Item (POST)
 router.post("/items", async (req, res) => {
-  const { name ,domain} = req.body;
-  if (!name || !domain) return res.status(400).json({ message: "Name is required" });
+  const { name ,domain,created_by} = req.body;
+  if (!name || !domain||!created_by) return res.status(400).json({ message: "Name is required" });
 
   try {
-    const newItem = new Item({ name,domain });
+    const newItem = new Item({ name,domain,created_by });
     await newItem.save();
     res.status(201).json(newItem);
   } catch (error) {
@@ -19,15 +19,29 @@ router.post("/items", async (req, res) => {
   }
 });
 
-// Get All Items (GET)
+
+// Get ALL items
 router.get("/items", async (req, res) => {
   try {
-    const items = await Item.find();
+    const items = await Item.find().populate('created_by', 'Name Email');
     res.json(items);
   } catch (error) {
     res.status(500).json({ message: "Server Error", error });
   }
 });
+
+// Get items CREATED BY a specific user
+router.get("/items/created-by/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const items = await Item.find({ created_by: userId }).populate('created_by', 'Name Email');
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
+});
+
+
 
 // Get Single Item by ID (GET)
 router.get("/items/:id", async (req, res) => {
@@ -100,6 +114,16 @@ router.post('/register',async(req,res)=>{
       err:err.message
     })
   }
-})
+});
+
+router.get("/users", async (req, res) => {
+  try {
+    const users = await User.find({}, "Name Email"); // Return just the name and email
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch users", error });
+  }
+});
+
 
 module.exports = router;
